@@ -8,6 +8,9 @@ contract StorePoints {
   // Evento di errrore nel caso in cui l'utente non ha abbastanza punti per comprare quel prodotto
   event NeedMorePointsMessage( address _indirizzo, string message );
 
+  // Evento di conferma acquisto di quel prodotto
+  event SuccessBoughtMessage( address _indirizzo, string message );
+
     // vado a ricercare nella mappa l'address ( from ) e restituisco il valore di punti che è stato salvato
     function getPunti(address _indirizzo) public returns (int256) {
         if (mappa_punti[_indirizzo] == 0) {
@@ -26,6 +29,7 @@ contract StorePoints {
         emit NeedMorePointsMessage(_indirizzo, "Punti insufficienti");
       }else{
         setPunti(_indirizzo, amount*-1); // aggiorno i punti dell'account dopo la speso
+        emit SuccessBoughtMessage(_indirizzo, "Acquisto eseguito correttamente");
       }
-    }//Gabriela
+    }
 }
