@@ -18,3 +18,13 @@ Contracts: Compile:         cd truffle && truffle compile
   Dapp: Run dev server:       cd client && npm start
   Dapp: Test:                 cd client && npm test
   Dapp: Build for production: cd client && npm run build
+
+// Carica il contratto
+let storePoints = await StorePoints.deployed();
+
+// Ottieni il saldo di punti per un indirizzo
+let balance = await storePoints.getPunti('<INDIRIZZO>');
+console.log('Punti disponibili:', balance.toNumber());
+
+// Esegui una transazione di acquisto con i punti
+await storePoints.spendPoints('<INDIRIZZO>', <QUANTITA_PUNTI>);
