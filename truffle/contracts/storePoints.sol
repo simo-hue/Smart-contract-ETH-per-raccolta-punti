@@ -12,7 +12,7 @@ contract StorePoints {
   event SuccessBoughtMessage( address _indirizzo, string message );
 
     // vado a ricercare nella mappa l'address ( from ) e restituisco il valore di punti che è stato salvato
-    function getPunti(address _indirizzo) public returns (int256) {
+    function getPunti(address _indirizzo) public returns (int256 punti) {
         if (mappa_punti[_indirizzo] == 0) {
             mappa_punti[_indirizzo] = 0;
         } else return mappa_punti[_indirizzo];
